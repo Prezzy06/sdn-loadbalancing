@@ -1,0 +1,25 @@
+{
+  "annotations": {"list": []},
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Process CPU",
+      "targets": [
+        {"expr": "process_cpu_seconds_total", "legendFormat": "cpu"}
+      ],
+      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 0}
+    }
+  ],
+  "schemaVersion": 18,
+  "style": "dark",
+  "tags": ["ryu"],
+  "templating": {"list": []},
+  "time": {"from": "now-6h", "to": "now"},
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Ryu Metrics",
+  "version": 1
+}

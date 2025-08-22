@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "sdn-fat-tree-loadbalancer"
+version = "0.1.0"
+description = "SDN multipath load balancing for fat-tree topologies using Ryu and OpenDaylight"
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "controllers" }, { include = "utils" }]
+
+[tool.poetry.dependencies]
+python = ">=3.13,<3.14"
+ryu = "*"
+networkx = "^3.3"
+requests = "^2.32.3"
+prometheus-client = "^0.20.0"
+eventlet = "*"
+# Optional use in ODL or async helpers
+aiohttp = "^3.10.5"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.2"
+pytest-asyncio = "^0.23.8"
+black = "^24.8.0"
+ruff = "^0.6.8"
+
+[tool.ruff]
+line-length = 100
+
+[build-system]
+requires = ["poetry-core>=1.9.0"]
+build-backend = "poetry.core.masonry.api"
