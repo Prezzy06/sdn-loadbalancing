@@ -1,0 +1,42 @@
+version: "3.9"
+services:
+  ryu:
+    image: ghcr.io/osrg/ryu:latest
+    command: ryu-manager /code/controllers/ryu_app.py
+    network_mode: host
+    volumes:
+      - ./controllers:/code/controllers
+      - ./utils:/code/utils
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  odllb:
+    image: opendaylight/odl-titanium:latest
+    network_mode: host
+    environment:
+      - JAVA_MAX_MEM=2048m
+    healthcheck:
+      test: ["CMD", "curl", "-k", "https://localhost:8443/restconf"]
+      interval: 20s
+      timeout: 5s
+      retries: 20
+
+  mininet:
+    image: opennetworkinglab/mininet:2.3.0
+    privileged: true
+    network_mode: host
+    command: python3 /code/mininet/fat_tree.py
+    volumes:
+      - ./mininet:/code/mininet
+
+  prometheus:
+    image: prom/prometheus:latest
+    network_mode: host
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    network_mode: host
+    volumes:
+      - ./monitoring/provisioning:/etc/grafana/provisioning
