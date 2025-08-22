@@ -17,11 +17,11 @@ A modern, containerized SDN project that combines equal-cost multipath (ECMP) ro
 flowchart LR
   MN[Mininet Fat-Tree] <--> RYU[Ryu Controller]
   MN <--> ODL[OpenDaylight]
-  RYU --- PF[PathFinder (NetworkX Dijkstra)]
-  RYU --- LM[LoadMonitor (port stats)]
-  RYU --- FI[FlowInstaller (OF1.3)]
-  ODL --- ODLFI[ODL FlowInstaller (RESTCONF)]
-  RYU --> PROM[Prometheus Exporter]
+  RYU --- PF["PathFinder (NetworkX Dijkstra)"]
+  RYU --- LM["LoadMonitor (port stats)"]
+  RYU --- FI["FlowInstaller (OF1.3)"]
+  ODL --- ODLFI["ODL FlowInstaller (RESTCONF)"]
+  RYU --> PROM["Prometheus Exporter"]
 ```
 
 ## Quick Start (Docker Compose)
